@@ -5,6 +5,10 @@
     <title>Title</title>
 </head>
 <body>
-    <h1 th:text="${something}"></h1>
+    <h1>BooksBase</h1>
+    <form method="get" th:action="@{/search}">
+        <input type="text" name="value">
+        <input type="submit" value="Search">
+    </form>
 </body>
 </html>

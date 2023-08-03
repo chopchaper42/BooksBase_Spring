@@ -1,0 +1,25 @@
+body, html {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.all-wrap {
+    display: flex;
+    width: 720px;
+    height: 480px;
+    background-color: aqua;
+    margin-top: 75px;
+}
+
+.image {
+    width: 50%;
+}
+
+.info {
+
+}
