@@ -7,29 +7,38 @@
           integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" th:href="@{/main.css}">
 </head>
-<body>
-    <div class="main-container">
-        <div class="w-50 border border-info rounded border-opacity-75 main-container mt-3">
-            <form class="w-100 m-3" method="post">
+<body> <!-- th:if="${#fields.hasErrors('email')}" th:errors="*{email}"-->
+    <div class="container-md d-flex justify-content-center">
+        <div class="w-50 border border-info rounded border-opacity-75 main-container mt-3" style="min-width: 454px">
+            <form class="w-100 m-3" method="post" action="#" th:object="${registrationForm}" th:action="@{/registration}">
                 <div class="mb-3">
                     <label for="email-input" class="form-label">Email address</label>
-                    <input class="form-control" type="email" id="email-input">
+                    <input class="form-control" type="email" id="email-input" th:field="*{email}">
+                    <p class="form-text validation-error"
+                       th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Invalid Email.</p>
                 </div>
                 <div class="mb-3">
                     <label for="login-input" class="form-label">Login</label>
-                    <input class="form-control" type="text" id="login-input">
+                    <input class="form-control" type="text" id="login-input" th:field="*{username}">
+                    <p class="form-text validation-error"
+                          th:if="${#fields.hasErrors('username')}"
+                          th:errors="*{username}">msg here</p>
                 </div>
                 <div class="mb-3">
                     <label for="pass-input" class="form-label">Password</label>
-                    <input class="form-control" type="password" id="pass-input">
+                    <input class="form-control" type="password" id="pass-input" th:field="*{password}">
+                    <p class="form-text validation-error"
+                          th:if="${#fields.hasErrors('password')}"
+                          th:errors="*{password}">msg here</p>
                 </div>
                 <div class="mb-4">
                     <label for="conf-pass-input" class="form-label">Confirm password</label>
                     <input class="form-control" type="password" id="conf-pass-input">
+                    <p class="form-text validation-error"
+                       th:if="${#fields.hasErrors('passwordConfirmation')}"
+                       th:errors="*{passwordConfirmation}">msg here</p>
                 </div>
-                <div class="mb-3">
-                    <input class="form-control" type="submit" id="form-submit">
-                </div>
+                <button class="btn btn-primary" type="submit">Submit</button>
                 <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
             </form>
         </div>

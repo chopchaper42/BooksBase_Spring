@@ -38,7 +38,6 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-//            .csrf((csrf) -> csrf.disable()) // TODO: enable csrf for security. Add a token to all post requests
             .authorizeHttpRequests(
                 (authorizeHttpRequests) ->
                     authorizeHttpRequests
