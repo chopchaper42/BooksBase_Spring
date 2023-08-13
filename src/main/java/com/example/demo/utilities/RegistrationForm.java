@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.utilities;
 
 import com.example.demo.data.User;
 import jakarta.validation.constraints.Email;

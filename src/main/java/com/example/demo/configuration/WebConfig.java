@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.configuration;
 
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
@@ -11,8 +11,11 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("home");
+//        registry.addViewController("/home").setViewName("home");
         registry.addViewController("/login");
+        registry.addViewController("/account");
         registry.addViewController("/registration");
+        registry.addViewController("/successAuth");
+        registry.addViewController("/failAuth");
     }
 }

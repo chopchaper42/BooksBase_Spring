@@ -33,7 +33,7 @@
                 </div>
                 <div class="mb-4">
                     <label for="conf-pass-input" class="form-label">Confirm password</label>
-                    <input class="form-control" type="password" id="conf-pass-input">
+                    <input class="form-control" type="password" id="conf-pass-input" th:field="*{passwordConfirmation}">
                     <p class="form-text validation-error"
                        th:if="${#fields.hasErrors('passwordConfirmation')}"
                        th:errors="*{passwordConfirmation}">msg here</p>

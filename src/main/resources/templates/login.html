@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <form class="container-sm mt-5 border rounded-2" style="max-width: 524px" th:object="${loginForm}" method="post">
+        <form class="container-sm mt-5 border rounded-2" style="max-width: 524px" th:object="${loginForm}" method="post" th:action="@{/login}">
             <div class="row">
                 <div class="col">
                     <div class="my-3">

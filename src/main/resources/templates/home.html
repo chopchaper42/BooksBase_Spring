@@ -1,14 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
     <h1>BooksBase</h1>
+    <div sec:authorize="isAuthenticated()">
+        <h3>Welcome, <span sec:authentication="name">Biba</span></h3>
+        <h4>Roles: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span></h4>
+    </div>
+<!--    <h3 th:if="${}" th:text="|Welcome logged in user!!!|"></h3>-->
     <form method="get" th:action="@{/search}">
         <input type="text" name="value">
         <input type="submit" value="Search">
     </form>
+    <a  th:href="@{/login}" sec:authorize="!isAuthenticated()">Login</a>
+    <a th:href="@{/logout}" sec:authorize="isAuthenticated()">Logout</a>
+    <a th:href="@{/account}" sec:authorize="isAuthenticated()">Account</a>
+    <a th:href="@{/admin}" sec:authorize="hasRole('ADMIN')">Admin</a>
 </body>
 </html>

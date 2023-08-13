@@ -1,12 +1,11 @@
 package com.example.demo.security;
 
-import com.example.demo.RegistrationForm;
 import com.example.demo.crud.UserRepository;
+import com.example.demo.utilities.RegistrationForm;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,7 +44,10 @@ public class RegistrationController {
             error = true;
             errors.rejectValue("email", "1", "Email already in use.");
         }
-        if (regForm.getPassword() != regForm.getPasswordConfirmation()) {
+        if (!regForm.getPassword().equals(regForm.getPasswordConfirmation())) {
+            log.warn("Passwords don't match!");
+            log.warn("Password 1: " + regForm.getPassword());
+            log.warn("Password 2: " + regForm.getPasswordConfirmation());
             error = true;
             errors.rejectValue("passwordConfirmation", "1", "Passwords should match.");
         }

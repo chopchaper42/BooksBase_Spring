@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
 import com.example.demo.crud.BookRepository;
 import com.example.demo.data.Book;
