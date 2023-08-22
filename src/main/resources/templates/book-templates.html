@@ -1,0 +1,30 @@
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<div class="card my-3 book-card" style="max-width: 540px" th:fragment="book-card(addBookUri, removeBookUri)">
+    <div class="row g-0 m-0">
+        <div class="col-md">
+            <div class="card-header">
+                <h4><a th:href="@{/book(id=${book.getId()})}" th:text="${book.getTitle()}" style="text-decoration: none; color: #212529"></a></h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Author: <a th:href="@{/author(id=${book.getAuthor().getId()})}" th:text="${book.getAuthor().getFullName()}"></a></p>
+                <p class="card-text" th:text="'Published in: ' + ${book.getPublishingYear()}"></p>
+                <p class="card-text" th:text="'Description: ' + ${book.getDescription()}"></p>
+                <div sec:authorize="isAuthenticated()">
+                    <form th:if="${!#lists.contains(userBooks, book)}" th:action="@{${addBookUri}}" method="post">
+                        <input type="submit" class="btn btn-warning" value="Add">
+                        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                    </form>
+                    <div th:if="${#lists.contains(userBooks, book)}">
+                        <p>This is your favorite book!</p>
+                        <form th:action="@{${removeBookUri}}" method="post">
+                            <input type="submit" class="btn btn-secondary" value="Remove">
+                            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div th:fragment="book-review" class="my-3 bordered" th:text="${review.getText()}"></div>
+</html>

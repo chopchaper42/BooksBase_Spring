@@ -1,4 +1,4 @@
-package com.example.demo.security;
+package com.example.demo.controllers;
 
 import com.example.demo.crud.UserRepository;
 import com.example.demo.utilities.RegistrationForm;

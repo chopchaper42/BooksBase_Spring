@@ -50,8 +50,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(
                 (authorizeHttpRequests) ->
                     authorizeHttpRequests
-                        .requestMatchers("/", "/search", "/book", "/login", "/registration", "/logout", "/author").permitAll()
-                            .requestMatchers("/account").hasRole("USER")
+                        .requestMatchers("/", "/addBook", "/removeBook", "/search", "/book/**", "/login", "/registration", "/logout", "/author", "/about", "/resources/**", "/error").permitAll()
+                            .requestMatchers("/account").authenticated()
                             .requestMatchers("/admin").hasRole("ADMIN")
 //                        .requestMatchers("/favorite").hasRole("USER")
                 ).formLogin((formLogin) -> {

@@ -8,9 +8,10 @@
 
 </head>
 <body>
-    <table class="table thead-dark table-striped table-bordered container-md">
+    <div th:insert="~{home :: header}"></div>
+    <table class="table thead-dark table-striped table-bordered container-md mt-3" th:fragment="book-table">
         <caption class="caption-top">Found books</caption>
-        <thead class="table-warning">
+        <thead class="table-dark">
             <tr>
                 <td>Id</td>
                 <td>Title</td>

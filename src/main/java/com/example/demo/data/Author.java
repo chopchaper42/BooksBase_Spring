@@ -15,7 +15,9 @@ import java.sql.Date;
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private int id;
+    @Column(name = "name")
     private String name;
     @Column(name = "lastname")
     private String lastName;

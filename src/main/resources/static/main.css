@@ -1,3 +1,37 @@
 .validation-error {
     color: #ff4343;
 }
+
+.no-decoration-link {
+    text-decoration: none;
+}
+
+.title {
+    font-size: 25px;
+}
+
+.book-card {
+    max-width: 256px;
+}
+
+.navig {
+    /*background-color: #f0e8ed;*/
+    background-color: black;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+.w-20 {
+    width: 20%;
+}
+
+input[type=text] {
+    outline: none;
+}
+
+input[type=submit] {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
