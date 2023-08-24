@@ -26,5 +26,22 @@
         </div>
     </div>
 </div>
-<div th:fragment="book-review" class="my-3 bordered" th:text="${review.getText()}"></div>
+<div th:fragment="book-review" class="my-3 bordered">
+    <div class="d-flex flex-row justify-content-between" style="background-color: #eaeaea">
+        <h4 class="m-0 px-1 py-2"th:text="${review.getUser().getUsername()}"></h4>
+<!--        <p class="m-0 d-inline" style="text-align: center"><a th:text="Delete" class="mx-2 p-0"></a></p>-->
+<!--        <p class="m-0 d-inline" style="text-align: center"><a th:text="Edit" class="mx-2 p-0"></a></p>-->
+        <div class="d-flex align-items-center">
+            <!--<a th:if="${#authentication.getName().equals(review.getUser().getUsername()) ||
+                        #authentication.getAuthorities().contains('ROLE_ADMIN') ||
+                        #authentication.getAuthorities().contains('ROLE_MODERATOR') }" th:text="Delete" class="d-inline mx-2"></a>-->
+<!--            <a sec:authorize="hasRole('ADMIN', 'MODERATOR') || ${#authentication.getName().equals(review.getUser().getUsername())}" th:text="Delete" class="d-inline mx-2"></a>-->
+            <a th:text="Delete" th:href="@{/deleteReview}" sec:authorize="hasRole('ADMIN', 'MODERATOR')"></a>
+            <a th:text="Delete" sec:authorize="hasRole('USER')" th:if="${#authentication.getName().equals(review.getUser().getUsername())}"></a>
+            <a th:if="${#authentication.getName().equals(review.getUser().getUsername())}" th:text="Edit" class="d-inline mx-2"></a>
+        </div>
+    </div>
+    <p th:text="${review.getText()}" class="p-3" style="background-color: #f4f4f4"></p>
+</div>
+
 </html>

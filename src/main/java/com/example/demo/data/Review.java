@@ -26,4 +26,14 @@ public class Review {
     )
     @ManyToOne
     private User user;
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", text='" + text + '\'' +
+                ", postDate=" + postDate +
+                ", user=" + user.getUsername() +
+                '}';
+    }
 }

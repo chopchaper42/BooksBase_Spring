@@ -81,8 +81,13 @@ public class User implements UserDetails {
 
     @Override
     public String toString() {
-        return "User:\n\tusername:" + username
-                + "\n\tid: " + id
-                + "\n\tbooks: " + books;
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", authorities=" + authorities +
+                ", books=" + books.size() +
+                '}';
     }
 }

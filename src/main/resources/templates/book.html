@@ -38,11 +38,14 @@
                 <div th:if="${#lists.isEmpty(book.getReviews())}">No reviews yet.</div>
             </div>
         </div>
-        <div class="col-4 d-flex flex-column">
+        <div class="col-4 d-flex flex-column" th:if="${!#lists.isEmpty(authorBooks)}">
             <h4 th:text="|Other books by ${book.getAuthor().getFullName()}:|" class="mt-3"></h4>
-            <div th:each="book : ${authorBooks}">
-                <div th:replace="~{book-templates :: book-card(@{/book/addBook(bookId=${book.getId()})}, @{/book/removeBook(bookId=${book.getId()})})}"></div>
-            </div>
+            <ul>
+                <li th:each="book : ${authorBooks}">
+    <!--                <div th:replace="~{book-templates :: book-card(@{/book/addBook(bookId=${book.getId()})}, @{/book/removeBook(bookId=${book.getId()})})}"></div>-->
+                    <a th:text="${book.getTitle()}" th:href="@{/book(id=${book.getId()})}"></a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

@@ -31,4 +31,16 @@ public class Book {
     )
     @OneToMany
     private List<Review> reviews;
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", publishingYear='" + publishingYear + '\'' +
+                ", author=" + author.getFullName() +
+                ", reviews=" + reviews.size() +
+                '}';
+    }
 }
