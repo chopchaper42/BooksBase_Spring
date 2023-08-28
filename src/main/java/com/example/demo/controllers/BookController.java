@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -87,6 +88,16 @@ public class BookController {
 
         reviewRepository.save(review);
         bookRepository.save(book);
+
+        return "redirect:/book?id=" + bookId;
+    }
+
+    @Secured({ "ROLE_ADMIN", "ROLE_MODERATOR" })
+    @GetMapping("/deleteReview")
+    public String deleteReview(@RequestParam int bookId, @RequestParam long reviewId) {
+        Review review = reviewRepository.findById(reviewId).orElse(null);
+        if (review != null)
+            reviewRepository.delete(review);
 
         return "redirect:/book?id=" + bookId;
     }

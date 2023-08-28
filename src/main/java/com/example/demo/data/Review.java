@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.sql.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,6 +27,14 @@ public class Review {
     )
     @ManyToOne
     private User user;
+
+    @JoinTable(
+            name = "replies",
+            joinColumns = @JoinColumn(name = "original_review", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "reply", referencedColumnName = "id")
+    )
+    @OneToMany
+    private List<Review> replies;
 
     @Override
     public String toString() {
